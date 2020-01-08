@@ -1,0 +1,20 @@
+---
+schemaVersion: '2.2'
+description: Configure NAT on Debian Stretch
+mainSteps:
+- action: aws:runShellScript
+  name: InstallDependencies
+  inputs:
+    runCommand:
+      - DEBIAN_FRONTEND=noninteractive aptitude install iptables-persistent -y
+- action: aws:runShellScript
+  name: EnableIpv4Routing
+  inputs:
+    runCommand:
+      - sysctl -w net.ipv4.ip_forward=1 | tee --append /etc/sysctl.conf
+- action: aws:runShellScript
+  name: MasqueradePackets
+  inputs:
+    runCommand:
+      - iptables -t nat -A POSTROUTING -j MASQUERADE -s 172.31.0.0/24
+      - iptables-save > /etc/iptables/rules.v4

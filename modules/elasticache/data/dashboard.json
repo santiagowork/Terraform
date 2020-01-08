@@ -1,0 +1,225 @@
+{
+  "widgets": [{
+    "type": "metric",
+    "x": 0,
+    "y": 0,
+    "width": 6,
+    "height": 6,
+    "properties": {
+      "metrics": [
+        ["AWS/ElastiCache", "CacheHits", "CacheClusterId", "${cluster_id}", {
+          "stat": "Sum",
+          "period": 60,
+          "label": "Hits"
+        }],
+        [".", "CacheMisses", ".", ".", {
+          "color": "#d62728",
+          "stat": "Sum",
+          "yAxis": "right",
+          "period": 60,
+          "label": "Misses"
+        }]
+      ],
+      "view": "timeSeries",
+      "stacked": false,
+      "region": "us-east-1",
+      "title": "Requests",
+      "yAxis": {
+        "left": {
+          "min": 0,
+          "showUnits": false
+        },
+        "right": {
+          "showUnits": false,
+          "min": 0
+        }
+      }
+    }
+  }, {
+    "type": "metric",
+    "x": 12,
+    "y": 0,
+    "width": 6,
+    "height": 6,
+    "properties": {
+      "metrics": [
+        ["AWS/ElastiCache", "Evictions", "CacheClusterId", "${cluster_id}", {
+          "period": 60,
+          "stat": "Sum",
+          "color": "#d62728"
+        }],
+        [".", "Reclaimed", ".", ".", {
+          "period": 60,
+          "stat": "Sum",
+          "color": "#1f77b4"
+        }]
+      ],
+      "view": "timeSeries",
+      "stacked": false,
+      "region": "us-east-1",
+      "yAxis": {
+        "left": {
+          "showUnits": false,
+          "min": 0
+        },
+        "right": {
+          "showUnits": false
+        }
+      },
+      "title": "Cleaning"
+    }
+  }, {
+    "type": "metric",
+    "x": 6,
+    "y": 0,
+    "width": 6,
+    "height": 6,
+    "properties": {
+      "metrics": [
+        ["AWS/ElastiCache", "CurrItems", "CacheClusterId", "${cluster_id}", {
+          "stat": "Sum",
+          "period": 60,
+          "label": "Items"
+        }],
+        [".", "CurrConnections", ".", ".", {
+          "period": 60,
+          "stat": "Sum",
+          "color": "#2ca02c",
+          "yAxis": "right",
+          "label": "Connections"
+        }]
+      ],
+      "view": "timeSeries",
+      "stacked": false,
+      "region": "us-east-1",
+      "yAxis": {
+        "left": {
+          "min": 0,
+          "showUnits": false
+        },
+        "right": {
+          "min": 0,
+          "showUnits": false
+        }
+      },
+      "legend": {
+        "position": "bottom"
+      },
+      "title": "Items vs Connections",
+      "period": 300
+    }
+  }, {
+    "type": "metric",
+    "x": 0,
+    "y": 6,
+    "width": 6,
+    "height": 6,
+    "properties": {
+      "metrics": [
+        ["AWS/ElastiCache", "CPUUtilization", "CacheClusterId", "${cluster_id}", {
+          "label": "CPU (Avg)",
+          "period": 60
+        }],
+        ["...", {
+          "label": "CPU (Max)",
+          "period": 60,
+          "stat": "Maximum",
+          "color": "#d62728"
+        }],
+        [".", "EngineCPUUtilization", ".", ".", {
+          "period": 60,
+          "label": "Engine CPU (Avg)",
+          "yAxis": "right"
+        }],
+        ["...", {
+          "period": 60,
+          "yAxis": "right",
+          "label": "Engine CPU (Max)",
+          "stat": "Maximum",
+          "color": "#ff7f0e"
+        }]
+      ],
+      "view": "timeSeries",
+      "stacked": false,
+      "region": "us-east-1",
+      "title": "CPU (%)",
+      "yAxis": {
+        "left": {
+          "min": 0,
+          "max": 100,
+          "showUnits": false
+        },
+        "right": {
+          "showUnits": false,
+          "min": 0,
+          "max": 100
+        }
+      }
+    }
+  }, {
+    "type": "metric",
+    "x": 6,
+    "y": 6,
+    "width": 6,
+    "height": 6,
+    "properties": {
+      "metrics": [
+        ["AWS/ElastiCache", "FreeableMemory", "CacheClusterId", "${cluster_id}", {
+          "label": "Freeable",
+          "period": 60
+        }],
+        [".", "BytesUsedForCache", ".", ".", {
+          "period": 60,
+          "label": "Cache",
+          "yAxis": "right"
+        }]
+      ],
+      "view": "timeSeries",
+      "stacked": false,
+      "region": "us-east-1",
+      "title": "Memory",
+      "yAxis": {
+        "left": {
+          "min": 0
+        },
+        "right": {
+          "min": 0
+        }
+      },
+      "period": 300
+    }
+  }, {
+    "type": "metric",
+    "x": 12,
+    "y": 6,
+    "width": 6,
+    "height": 6,
+    "properties": {
+      "metrics": [
+        ["AWS/ElastiCache", "NetworkBytesIn", "CacheClusterId", "${cluster_id}", {
+          "stat": "Sum",
+          "period": 60,
+          "label": "In"
+        }],
+        [".", "NetworkBytesOut", ".", ".", {
+          "yAxis": "right",
+          "stat": "Sum",
+          "period": 60,
+          "label": "Out"
+        }]
+      ],
+      "view": "timeSeries",
+      "stacked": false,
+      "region": "us-east-1",
+      "title": "Network",
+      "yAxis": {
+        "left": {
+          "min": 0
+        },
+        "right": {
+          "min": 0
+        }
+      }
+    }
+  }]
+}

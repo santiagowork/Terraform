@@ -1,0 +1,4 @@
+{
+  "InstanceId": [<instanceID>],
+  "PublicIp": ["${public_ip}"]
+}

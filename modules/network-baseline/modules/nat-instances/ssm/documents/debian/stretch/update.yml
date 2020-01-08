@@ -1,0 +1,27 @@
+---
+schemaVersion: '2.2'
+description: Update Debian Stretch
+mainSteps:
+- action: aws:runShellScript
+  name: InstallAptitude
+  inputs:
+    runCommand:
+      - apt-get install aptitude -y
+- action: aws:runShellScript
+  name: Upgrade
+  inputs:
+    runCommand:
+      - aptitude update
+      - DEBIAN_FRONTEND=noninteractive aptitude upgrade -y
+- action: aws:runShellScript
+  name: BaselinePackages
+  inputs:
+    runCommand:
+      - DEBIAN_FRONTEND=noninteractive aptitude install tree psutils vim python3-pip -y
+- action: aws:runShellScript
+  name: InstallAwsCli
+  inputs:
+    runCommand:
+      - DEBIAN_FRONTEND=noninteractive aptitude purge awscli -y
+      - DEBIAN_FRONTEND=noninteractive aptitude install '?reverse-depends(awscli)' -y
+      - pip3 install awscli -U
